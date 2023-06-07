@@ -5,4 +5,4 @@ word_last_2 = word[-2:]
 word_middle = word[1: -1]
 print(f"First 3 letters: {}".format(word_first_3))
 print(f"Last 2 letters: {}".format(word_last_2))
-print(f"Middle word: {}".format(middle_word))
+print(f"Middle word: {}".format(word_middle))
