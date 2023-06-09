@@ -2,7 +2,7 @@
 from calculator_1 import add, sub, mul, div
 from sys import argv
 if __name__ == "__main__":
-    argc = len(argv) -1
+    argc = len(argv) - 1
 #check if argc is not 3
     if argc != 3:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
