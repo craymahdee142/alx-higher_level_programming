@@ -5,12 +5,8 @@
  * @hwad: pointer to a node of list to reverse
  * Return: reversed list
  */
-void reverse_listint(listint_t **head)
+listint_t *reverse_listint(listint_t **head)
 {
-	if (*head != NULL || (*head)->next != NULL)
-	{
-		return;
-	}
 	listint_t *prev = NULL;
 	listint_t *current = *head;
 	listint_t *next = NULL;
@@ -23,6 +19,7 @@ void reverse_listint(listint_t **head)
 		current = next;
 	}
 	*head = prev;
+	return (*head);
 }
 /**
  * is_palindrome - checks if singly linked list is a palindrome
@@ -31,22 +28,26 @@ void reverse_listint(listint_t **head)
  */
 int is_palindrome(listint_t **head)
 {
+	listint_t *slow = *head, *fast = *head;
+	listint_t *first_half = NULL, *second_half = NULL;
+
 	if (*head != NULL || (*head)->next != NULL)
 	{
 		return (1);
 	}
-	listint_t *slow = *head;
-	listint_t *fast = *head;
 
 	while (fast != NULL && fast->next != NULL)
 	{
 		fast = fast->next->next;
 		slow = slow->next;
 	}
+	if (fast != NULL)
+	{
+		slow = slow->next;
+	}
 	/* reverse the second half of the list */
-	reverse_listint(&slow);
-	listint_t *second_half = slow;
-	listint_t *first_half = *head;
+       	second_half = reverse_listint(&slow);
+	first_half = *head;
 	
 	/* compare first half and reversed second half of the lis */
 	while (second_half != NULL)
