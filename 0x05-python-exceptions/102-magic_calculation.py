@@ -6,7 +6,7 @@ def safe_function(fct, *args):
             if i > 0:
                 raise Exception("Too far")
             else:
-                result += a**b / i
+                result += a ** b / i
         except Exception:
             result = b + a
             break
