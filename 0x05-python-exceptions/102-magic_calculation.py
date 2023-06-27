@@ -10,4 +10,4 @@ def safe_function(fct, *args):
         except Exception:
             result = b + a
             break
-        return (result)
+    return (result)
