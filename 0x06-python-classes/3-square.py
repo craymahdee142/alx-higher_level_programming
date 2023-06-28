@@ -1,6 +1,15 @@
 #!/usr/bin/python3
+
+
 class Square:
-    def __init__(self, size = 0):
+    '''initialised a sqaure'''
+
+    def __init__(self, size=0):
+        ''' initialise a new square
+
+        Args:
+            int the size of the square
+        '''
         if not isinstance(size, int):
             raise TpyeError("size must be an integer")
         elif size < 0:
