@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+'''define a class'''
+
 
 class Square:
     '''initialised a sqaure'''
@@ -16,6 +18,7 @@ class Square:
             raise ValueError("size must be >= 0")
         else:
             self.__size = size
-    '''define public instance method area'''
+
     def area(self):
+        '''return area of square'''
         return (self.__size ** 2)
