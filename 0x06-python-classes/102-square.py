@@ -49,3 +49,7 @@ class Square:
     def __ge__(self, other):
         '''define the >= comparison to the square'''
         return self.area() > other.area()
+
+    def __gt__(self, other):
+        '''define the > comparison to the square'''
+        return self.area() > other.area()
