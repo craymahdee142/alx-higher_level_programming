@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <Python.h>
 /**
  *print_python_list_info - print basic Python info
@@ -16,6 +15,7 @@ void print_python_list_info(PyObject *p)
 
 	printf("[*] Size of the Python List = %d\n", size);
 	printf("[*] Alloacted = %d\n", alloc);
+
 	while (i < size)
 	{
 		printf("Element %d: ", i);
