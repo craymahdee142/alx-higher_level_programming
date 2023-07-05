@@ -1,0 +1,98 @@
+``0-add_integer`` module
+========================
+
+using ``add_integer``
+---------------------
+
+Importing the function from the module:
+	>>> add_integer = __import__("0-add_integer").add_integer
+
+Checking for module docstring:
+	>>> m = __import__("add_integer").__doc__
+	>>> len(m) > 1
+	True
+
+Checking for function docstring:
+	>>> f = __import__("add_integer").__doc__
+        >>> len(f) > 1
+        True
+
+Checking for normal addition:
+	>>> add_integer(3, 5)
+	8
+
+Checking for positive with negative:
+        >>> add_integer(2, -4)
+        -2
+
+Checking for negative with positive:
+        >>> add_integer(-2, 5)
+        3
+
+Checking addition with multiple values:
+	>>> [add_integer(i, i ** 2) for i in range(5)]
+	[0, 1, 2, 3, 4]
+
+Checking float with int:
+        >>> add_integer(2.1, 4)
+        6
+
+Checking for both float:
+        >>> add_integer(2.12, 4.3)
+        6
+
+Checking int with float:
+        >>> add_integer(4, 3.2)
+        7
+
+Checking for passed NaN:
+        >>> add_integer(1, float(NaN))
+        Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
+
+Checking for passed inf:
+        >>> add_integer(1, float(inf))
+        Traceback (most recent call last):
+        ...
+        ValueError: cannot convert float infinite to integer
+
+Checking super long int:
+        >>> add_integer(999999999999999999999, 1)
+        1000000000000000000000
+
+Checking int with str:
+	>>> add_integer(3, "2")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+Checking for both non-number:
+        >>> add_integer((3), {"key": "value"})
+        Traceback (most recent call last):
+        ...
+        TypeError: a and b must be an integer
+
+Checking bool with int:
+        >>> add_integer(True, 2)
+        Traceback (most recent call last):
+        ...
+        TypeError: a must be an integer
+
+Checking int with bool:
+        >>> add_integer(1, False)
+        Traceback (most recent call last):
+        ...
+        TypeError: b must be an integer
+
+Checking no args:
+        >>> add_integer()
+        Traceback (most recent call last):
+        ...
+        TypeError: add_integer() missing required positioanl arguments: 'a' and 'b'
+
+Checking with one args:
+        >>> add_integer(1)
+        Traceback (most recent call last):
+        ...
+        TypeError: add_integer() missing 1 required positioanl arguments:'b'
