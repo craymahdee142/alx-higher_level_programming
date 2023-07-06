@@ -3,7 +3,15 @@
 
 
 class Rectangle:
-    '''represent a rectangle'''
+    '''represent a rectangle
+
+    Attributes:
+            number_of_instnace (int): number rect instances
+            print_symbol (any): symbol used for string representation
+    '''
+
+    number_of_instances = 0
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         '''
@@ -15,6 +23,7 @@ class Rectangle:
         '''
         self.height = height
         self.width = width
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -72,13 +81,48 @@ class Rectangle:
             return (0)
         return (2 * (self.__width + self.__height))
 
+    @classmethod
+    def square(cls, size=0):
+        '''return a new rectangle instance width == height == size'''
+        return cls(size, size)
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        '''
+        Compares two rectangle and returns one with biggest area.
+
+        Args:
+            rect_1 (Rectangle): firts rectangle
+            rect_2 (Rectangle): second rectangle
+
+        Raises:
+            TypeError: if either rect_1, or rect_2
+            is not an instance of rectangle.
+        '''
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return (rect_1)
+        return (rect_2)
+
     def __str__(self):
-        '''return a string representation of rectangle'''
+        '''print a string representation of rectangle'''
         if self.width == 0 or self.height == 0:
             return ""
         rect_str = ""
         for i in range(self.height):
-            rect_str += '#' * self.width
+            rect_str += str(self.print_symbol) * self.width
             if i < self.height - 1:
                 rect_str += '\n'
         return (rect_str)
+
+    def __repr__(self):
+        '''return a string representation of rectangle'''
+        return f"Rectangle({self.__width}, {self.__height})"
+
+    def __del__(self):
+        '''print message when instance rectangle is deleted'''
+        print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1

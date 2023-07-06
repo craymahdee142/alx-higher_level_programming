@@ -73,7 +73,7 @@ class Rectangle:
         return (2 * (self.__width + self.__height))
 
     def __str__(self):
-        '''return a string representation of rectangle'''
+        '''print a string representation of rectangle'''
         if self.width == 0 or self.height == 0:
             return ""
         rect_str = ""
@@ -82,3 +82,7 @@ class Rectangle:
             if i < self.height - 1:
                 rect_str += '\n'
         return (rect_str)
+
+    def __repr__(self):
+        '''return a string representation of rectangle'''
+        return f"Rectangle({self.__width}, {self.__height})"
