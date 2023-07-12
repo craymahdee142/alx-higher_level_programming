@@ -2,7 +2,6 @@
 '''Defines a class fo students'''
 
 
-
 class Student:
     '''Represenatation of student'''
 

@@ -2,7 +2,6 @@
 '''Defines a class fo students'''
 
 
-
 class Student:
     '''Represenatation of student'''
 
@@ -23,6 +22,7 @@ class Student:
 
         If attrs is a list of strings, only attribute
         '''
-        if (type(attrs) == list and all(type(element) == str for element in attrs)):
+        if (type(attrs) == list and
+                all(type(element) == str for element in attrs)):
             return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
         return self.__dict__
