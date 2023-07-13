@@ -12,6 +12,6 @@ def is_kind_class(obj, a_class):
     Returns:
         returns true if object is same as instance of a_class or false if fails
     '''
-    if type(obj) == a_class:
+    if isinstance(obj, a_class):
         return True
     return False
