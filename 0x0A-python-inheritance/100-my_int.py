@@ -11,4 +11,4 @@ class MyInt(int):
 
     def __ne__(self, other):
         '''overide opt == with !='''
-        return int(self) != other
+        return int(self) == other
