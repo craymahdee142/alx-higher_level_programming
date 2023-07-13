@@ -2,7 +2,7 @@
 '''represent is the same class'''
 
 
-def is_same_class(obj, a_class):
+def is_kind_class(obj, a_class):
     '''
     check if an object is exactly same as instance of a given class
 
