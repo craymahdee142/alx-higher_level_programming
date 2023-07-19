@@ -94,47 +94,42 @@ class Rectangle(Base):
         if self.width == 0 or self.height == 0:
             print("")
             return
-        [print("") for y in range(self.y)]
+        for y in range(self.y):
+            print("")
         for h in range(self.height):
-            [print("", end="") for x in range(self.x)]
-            [print("#", end="") for w in range(self.width)]
+            if self.x == 0:
+                for w in range(self.width):
+                    print("#", end="")
+            else:
+                for x in range(self.x):
+                    print(" ", end="")
+                for w in range(self.width):
+                    print("#", end="")
             print("")
 
     def update(self, *args, **kwargs):
         '''update the rectangle
 
+        Assign key/value arguments to attributes
+        kwargs is skipped if args is not empty
+
         Args:
-            *args (ints): new attribute values
-            ->1st argument represents id attribute
-            ->2nd argument represents width attribute
-            ->3rd argument represents height attribute
-            ->4th argument represents x attribute
-            ->5th argument represents y attribute
-            **kwrags (dict): new key/value pairs of attribute
+            *args - variable number of no keyword args
+            **kwargs - variable number of keyword args
         '''
-        if len(args):
-            for i, a enumerate(args):
-                if i = 0:
-                    self.id = a
-                elif i = 1:
-                    self.width = a
-                elif i = 2:
-                    self.height = a
-                elif i = 3:
-                    self.x = a
-                elif i = 4:
-                    self.y = a
-        else: 
-            if "id" in kwargs:
-                self.id = kwargs["id"]
-            elif "width" in kwargs:
-                self.width = kwrags["width"]
-            elif "height" in kwargs:
-                sel.height = kwargs["height"]
-            elif "x" in kwargs:
-                self.x = kwargs["x"]
-            elif "y" in kwrags:
-                self.y = kwargs["y"]
+        if len(args) == 0:
+            for key, value in kwargs.items():
+                self.__setter__(key, value)
+            return
+
+        try:
+            self.id = args[0]
+            self.width = args[1]
+            self.height = args[2]
+            self.x = args[3]
+            self.y = args[4]
+        except IndexError:
+            pass
 
     def to_dictionary(self):
         '''Return the dictionary represenatation of a rectangle'''
@@ -149,5 +144,5 @@ class Rectangle(Base):
     def __str__(self):
         '''return the print and str() representation of the rect'''
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
-                                                      self.x, self.y,
-                                                      self.width, self.height)
+                                                       self.x, self.y,
+                                                       self.width, self.height)

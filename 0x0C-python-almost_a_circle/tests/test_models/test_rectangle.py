@@ -526,7 +526,7 @@ class TestRectangle_stdout(unittest.TestCase):
     def test_display_width_height_x_y(self):
         r = Rectangle(2, 4, 3, 2, 0)
         capture = TestRectangle_stdout.capture_stdout(r, "display")
-        display = "\n\n   ##\n   ##\n   ##\n   ##\n"
+        display = "\n\n  ##\n  ##\n  ##\n  ##\n"
         self.assertEqual(display, capture.getvalue())
 
     def test_display_one_arg(self):

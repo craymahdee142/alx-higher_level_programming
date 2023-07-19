@@ -40,7 +40,7 @@ class Base:
         return json.dumps(list_dictionaries)
 
     @classmethod
-    def save_to_file(cls, list_objects):
+    def save_to_file(cls, list_objs):
         '''write json sterilization of a list objects to a file
 
         Args:
@@ -48,11 +48,11 @@ class Base:
         '''
         filename = cls.__name__ + ".json"
         with open(filename, "w") as jsonfile:
-            if list_objects is None:
+            if list_objs is None:
                 jsonfile.write("[]")
             else:
-                list_dicts = [o.to_dictionary() for o in list_objects]
-                jsonfile.write(Base.to_json_string(list_objects))
+                list_dicts = [o.to_dictionary() for o in list_objs]
+                jsonfile.write(Base.to_json_string(list_dicts))
 
     @staticmethod
     def from_json_string(json_string):
@@ -102,7 +102,7 @@ class Base:
             return []
 
     @classmethod
-    def save_to_file_csv(cls, list_objects):
+    def save_to_file_csv(cls, list_objs):
         '''write CSV seterization of a list of bojects to a file
 
         Args:
@@ -110,16 +110,16 @@ class Base:
         '''
         filename = cls.__name__ + ".csv"
         with open(filename, "w") as csvfile:
-            if list_objects is None or list_objects == []:
+            if list_objs is None or list_objs == []:
                 csvfile.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-                    writer = csv.DictWrite(csvfile, fieldnames=fieldnames)
-                    for object in list_object:
-                        write.writerow(object.to_dictioanry())
+                    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                    for object in list_objs:
+                        writer.writerow(object.to_dictioanry())
 
     @classmethod
     def load_fromfile_csv(cls):

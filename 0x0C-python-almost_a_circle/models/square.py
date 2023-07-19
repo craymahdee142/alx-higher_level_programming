@@ -24,50 +24,37 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
+        '''set the value of the square'''
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+
         self.width = value
         self.height = value
 
-    def update(self, *args, **kargs):
+    def update(self, *args, **kwargs):
         '''update the Square
 
-        Args:
-            *args (ints): new attribute values
-                ->1st argument represents id attribute
-                ->2st argument represents width attribute
-                ->3st argument represents height attribute
-                ->4st argument represents x attribute
-                ->5st argument represents y attribute
-            **kwrags (dict): new key/value pairs of attribute
-        '''
-        if args and len(args) != 0:
-            a = 0
-            for arg in args:
-                if a == 0:
-                    if arg is None:
-                        self.__init__(self.size, self.x, self.y)
-                    else:
-                        self.id = arg
-                elif a == 1:
-                    self.size = arg
-                elif a == 2:
-                    self.x = arg
-                elif a == 3:
-                    self.y = arg
-                a += 1
+        Assign key/value arguments to attributes
+        kwargs is skipped if args is not empty
 
-        elif kwrags and len(kwargs) != 0:
-            for k, v in kwargs.items():
-                if k == "id":
-                    if v is None:
-                        self.__init__(self.size, self.x, self.y)
-                    else:
-                        self.id = v
-                elif k == "size":
-                    self.size = v
-                elif k == "x":
-                    self.x = v
-                elif k == "y":
-                    self.y = v
+        Args:
+            *args - variable number of no keyword args
+            **kwargs - variable number of keyword args
+        '''
+        if len(args) == 0:
+            for key, value in kwargs.items():
+                self.__setter__(key, value)
+            return
+
+        try:
+            self.id = args[0]
+            self.size = args[1]
+            self.x = args[2]
+            self.y = args[3]
+        except IndexError:
+            pass
 
     def to_dictionary(self):
         '''return dict represenation of a Square'''
@@ -81,4 +68,4 @@ class Square(Rectangle):
     def __str__(self):
         '''return the print and str() represenattion of a Square'''
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
-                                                self.width)
+                                                 self.width)

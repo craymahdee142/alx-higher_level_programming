@@ -42,13 +42,13 @@ class TestBase_instantiation(unittest.TestCase):
         self.assertEqual(12, Base(12).id)
 
     def test_nb_instances_after_unique_id(self):
-        b1 = BAse()
+        b1 = Base()
         b2 = Base(12)
         b3 = Base()
         self.assertEqual(b1.id, b3.id - 1)
 
     def test_id_public(self):
-        b1 = Base(12)
+        b = Base(12)
         b.id = 15
         self.assertEqual(15, b.id)
 
@@ -93,7 +93,7 @@ class TestBase_instantiation(unittest.TestCase):
         self.assertEqual(bytearray(b"abcdef"), Base(bytearray(b"abcdef")).id)
 
     def test_memoryview_id(self):
-        self.assertEqual(memory(b"abdcef"), Base(memory(b"abcdef")).id)
+        self.assertEqual(memoryview(b"abdcef"), Base(memoryview(b"abcdef")).id)
 
     def test_inf_id(self):
         self.assertEqual(float("inf"), Base(float("inf")).id)
