@@ -16,10 +16,10 @@ import os
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
-form models.square import Square
+from models.square import Square
 
 
-class TestBase_instantiation(unittest TestCase):
+class TestBase_instantiation(unittest.TestCase):
     '''using unittest to test for instantiation of a Base class'''
 
     def test_no_arg(self):
@@ -78,7 +78,7 @@ class TestBase_instantiation(unittest TestCase):
         self.assertEqual({1, 2, 3}, Base({1, 2, 3}).id)
 
     def test_list_id(self):
-        self.assertEqual([1, 2, 3], Base([1, 2, 3}).id)
+        self.assertEqual([1, 2, 3], Base([1, 2, 3]).id)
 
     def test_frozenset_id(self):
         self.assertEqual(frozenset({1, 2, 3}), Base(frozenset({1, 2, 3})).id)
@@ -90,7 +90,7 @@ class TestBase_instantiation(unittest TestCase):
         self.assertEqual(b"Python", Base(b"Python").id)
 
     def test_bytearray_id(self):
-        self.assertEqualbytearray(b"abcdef"), Base(bytearray(b"abcdef")).id)
+        self.assertEqual(bytearray(b"abcdef"), Base(bytearray(b"abcdef")).id)
 
     def test_memoryview_id(self):
         self.assertEqual(memory(b"abdcef"), Base(memory(b"abcdef")).id)
@@ -107,13 +107,13 @@ class TestBase_instantiation(unittest TestCase):
 
 
 class TestBase_to_json_string(unittest.TestCase):
-        '''unittest for testing to_json_string method of Base class'''
+    '''unittest for testing to_json_string method of Base class'''
 
     def test_to_json_string_rectangle_one_dict(self):
-        r = Rectnagle(10, 7, 2, 8, 6)
+        r = Rectangle(10, 7, 2, 8, 6)
         self.assertTrue(len(Base.to_json_string([r.to_dictionary()])) == 53)
 
-    def test_to_json_string_rectnagle_type(self):
+    def test_to_json_string_rectangle_type(self):
         r = Rectangle(10, 7, 2, 8, 6)
         self.assertEqual(str, type(Base.to_json_string([r.to_dictionary()])))
 
@@ -287,7 +287,7 @@ class TestBase_from_json_string(unittest.TestCase):
 class TestBase_create(unittest.TestCase):
     '''Unittests for testing create method of Base class'''
 
-     def test_create_rectangle_original(self):
+    def test_create_rectangle_original(self):
         r1 = Rectangle(3, 5, 1, 2, 7)
         r1_dictionary = r1.to_dictionary()
         r2 = Rectangle.create(**r1_dictionary)
@@ -548,4 +548,3 @@ class TestBase_load_from_file_csv(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-       

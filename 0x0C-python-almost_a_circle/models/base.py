@@ -46,7 +46,7 @@ class Base:
         Args:
             list_objects (list): list of inherited Base instances
         '''
-        filename = cls.__name__ + ."json"
+        filename = cls.__name__ + ".json"
         with open(filename, "w") as jsonfile:
             if list_objects is None:
                 jsonfile.write("[]")
@@ -77,10 +77,10 @@ class Base:
         '''
         if dictionary and dictionary != {}:
             if cls.__name__ == "Rectangle":
-                new = cvls(1, 1)
+                new = cls(1, 1)
             else:
                 new = cls(1)
-                new.update(**ddictionary)
+                new.update(**dictionary)
                 return new
 
     @classmethod
@@ -98,7 +98,7 @@ class Base:
             with open(filename, "r") as jsonfile:
                 list_dicts = Base.from_json_string(jsonfile.read())
                 return [cls.create(**d) for d in list_dicts]
-        except I0Error:
+        except IOError:
             return []
 
     @classmethod
@@ -117,7 +117,7 @@ class Base:
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-                    csv_writer = csvDictWrite(csvfile, fieldnames=fieldnames)
+                    writer = csv.DictWrite(csvfile, fieldnames=fieldnames)
                     for object in list_object:
                         write.writerow(object.to_dictioanry())
 
@@ -140,7 +140,7 @@ class Base:
                     fieldnames = ["id", "size", "x", "y"]
                     list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
                     list_dicts = [dict([k, int(v)] for k, v in d.items())
-                                                for d in list_dicts]
+                                  for d in list_dicts]
                     return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []

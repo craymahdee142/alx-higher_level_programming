@@ -71,7 +71,6 @@ class TestRectangle_instantiation(unittest.TestCase):
         with self.assertRaises(AttributeError):
             print(Rectangle(5, 5, 0, 0, 1).__width)
 
-
     def test_y_private(self):
         with self.assertRaises(AttributeError):
             print(Rectangle(5, 5, 0, 0, 1).__y)
@@ -128,7 +127,6 @@ class TestRectangle_width(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle("invalid", 2)
 
-
     def test_complex_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle(complex(5), 2)
@@ -153,10 +151,9 @@ class TestRectangle_width(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle(frozenset({1, 2, 3, 1}), 2)
 
-     def test_list_width(self):
+    def test_list_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle([1, 2, 3], 2)
-
 
     def test_range_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
@@ -806,6 +803,6 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         with self.assertRaises(TypeError):
             r.to_dictionary(1)
 
+
 if __name__ == "__main__":
     unittest.main()
-
