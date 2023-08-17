@@ -1,0 +1,66 @@
+``3-say_my_name.txt`` module
+===========================
+
+Using ``say_my_name``
+---------------------------
+
+Importing the function from the module:
+	>>> say_my_name = __import__("say_my_name").say_my_name
+
+Checking for module docstring:
+	>>> m = __import__("3-say_my_name.txt").__doc__
+	>>> len(m) > 1
+	True
+
+Checking for function docstring:
+	>>> f = __import__("3-say_my_name.txt").__doc__
+	>>> len(f) > 1
+	True
+
+Checking for passing none as first_name:
+	>>> say_my_name(None, "Hi")
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+Checking for passing none as last_name:
+	>>> say_my_name("Hi", None)
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+Checking for passing wrong first_name:
+	>>> say_my_name(2, "Hi")
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+Checking for passing wrong type as last_name:
+	>>> say_my_name("Hi", [3])
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+Checking for normal usage:
+	>>> say_my_name("Hi", "You")
+	My name is Hi You
+	>>> say_my_name("You are good", "Yes, I am")
+	My name is You are good Yes, I am
+
+Checking for no args:
+	>>> say_my_name()
+	Traceback (most recent call last):
+	...
+	TypeError: no arguments passed: excepting two positional arguments
+
+Checking for 1 args:
+        >>> say_my_name("Hi")
+        Traceback (most recent call last):
+        ...
+        TypeError: say_my_name() takes 2 arguments, missing 1 required arguments
+
+Checking for more than 2 args:
+        >>> say_my_name()
+        Traceback (most recent call last):
+        ...
+        TypeError: say_my_name() takes 2 positional arguments, more that 2 were given
