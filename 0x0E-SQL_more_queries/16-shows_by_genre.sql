@@ -7,6 +7,6 @@
 --The database name will be passed as an argument of the mysql command
 
 SELECT title, tv_generes.name FROM tv_shows
-LEFT JOIN tv_shows_genres ON id=tv_show.genres.show_id
+LEFT JOIN tv_shows_genres ON tv_shows.id=tv_show.genres.show_id
 LEFT JOIN tv_genres ON tv_show_genres.genre_id = tv_genres.id
 OREDR BY title, tv_genres.name;

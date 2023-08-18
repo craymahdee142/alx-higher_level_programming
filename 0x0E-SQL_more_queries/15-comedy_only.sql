@@ -7,7 +7,7 @@
 --The database name will be passed as an argument of the mysql command
 
 SELECT title FROM tv_shows
-JOIN tv_show_genres ON id=tv_show_genres.show_id
-JOIN tv_genres ON genres.id=tv_show_genres.genre_id
+INNER JOIN tv_show_genres ON id=tv_show_genres.show_id
+INNER JOIN tv_genres ON genres.id=tv_show_genres.genre_id
 WHERE tv_genres.name = 'Comedy'
 OREDR BY title;

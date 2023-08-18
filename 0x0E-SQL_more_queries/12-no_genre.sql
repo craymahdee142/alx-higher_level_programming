@@ -7,5 +7,5 @@
 
 SELECT tv_shows.title, tv_show_genres.genre_id
 LEFT JOIN tv_show_genres ON id=tv_show_genres.show_id
-WHERE tv_show_genres.shows_id IN NULL
+WHERE tv_show_genres.show_id IS NULL
 ORDER BY title, tv_show_genres.genre_id;
