@@ -2,8 +2,8 @@
 
 let myVar = 89;
 
-function modifyMyVar(newVar) {
-    myVar = newVar;
+function modifyMyVar (newVar) {
+  myVar = newVar;
 }
 modifyMyVar(333);
 console.log(myVar);
