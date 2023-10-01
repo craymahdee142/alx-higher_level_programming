@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
 Python script that takes in url
  -- sends a POST request to the passed, takes email as parameter
@@ -13,8 +13,8 @@ import urllib.parse
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    email = sys.argv[2]
-    data = urllib.request.parse.urlencode(value).encode("ascii")
+    value = {"email": sys.argv[2]}
+    data = urllib.parse.urlencode(value).encode("ascii")
 
     # create HTTP POST request
     request = urllib.request.Request(url, data)
