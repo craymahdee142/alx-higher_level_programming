@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
 Python script that takes in url
  -- sends a POST request to the passed, takes email as parameter
@@ -7,13 +7,11 @@ Python script that takes in url
 
 
 import sys
-import urllib.request
+import requests
 
 if __name__ == "__main__":
     url = sys.argv[1]
+    value = {"email": sys.argv[2]}
 
-    # create HTTP POST request
-    request = urllib.request.Request(url)
-    # send request and capture the response
-    with urllib.request.urlopen(request) as reponse:
-        print(dict(response.headers).get("X-Required-ID"))
+    res = requests.post(url, data=value)
+    print(res.text)

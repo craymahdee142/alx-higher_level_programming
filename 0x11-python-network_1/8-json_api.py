@@ -5,18 +5,18 @@
 """
 
 import sys
-import urllib
+import requests
 
 if __name__ == "__main__":
-    letter = "" if len(sys.argv) == 1 else sys.argv[1]:
-        payload = {"q": letter}
+    letter = "" if len(sys.argv) == 1 else sys.argv[1]
+    payload = {"q": letter}
 
-    res = requests.post("http://0.0.0.0:5000/search_user", datapayload)
+    res = requests.post("http://0.0.0.0:5000/search_user", data=payload)
     try:
-        response = res.json
+        response = res.json()
         if response == {}:
-            print("no result")
+            print("No result")
         else:
-            print("[{}] {}".format(response.get("id"), repsonse.get("name")))
-    except VAlueError:
-        print("" Not a valid JSON)
+            print("[{}] {}".format(response.get("id"), response.get("name")))
+    except ValueError:
+        print("Not a valid JSON")

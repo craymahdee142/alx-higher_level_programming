@@ -13,7 +13,7 @@ import urllib.parse
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    value = {"email": sys[2]}
+    email = sys.argv[2]
     data = urllib.request.parse.urlencode(value).encode("ascii")
 
     # create HTTP POST request
